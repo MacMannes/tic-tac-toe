@@ -5,7 +5,7 @@ export class CLI {
     private io: UserIO;
 
     constructor(io: UserIO) {
-
+        this.io = io;
     }
 
     public displayBoard(board: Board): void {
@@ -22,5 +22,9 @@ export class CLI {
 
     public endGame(message: string): void {
 
+    }
+
+    private formatBoard(board: Board): string {
+        return 'TODO'
     }
 }
