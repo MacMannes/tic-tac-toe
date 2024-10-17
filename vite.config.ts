@@ -8,7 +8,7 @@ export default defineConfig({
 			all: true,
 			provider: 'v8',
 			reporter: ['text', 'lcov', 'html'],
-			exclude: [...configDefaults.exclude, 'src/domain/models.ts'],
+			exclude: [...configDefaults.exclude, 'src/domain/models.ts', 'src/index.ts', 'test'],
 		},
 	}
 });

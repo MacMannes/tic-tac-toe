@@ -110,4 +110,11 @@ describe('CLI', () => {
             expect(mockIO.print).toHaveBeenCalledWith('Bot placed at (1, 2)');
         });
     });
+
+    describe('close', () => {
+        it('should call close on UserIO', () => {
+            cli.close();
+            expect(mockIO.close).toHaveBeenCalledTimes(1)
+        });
+    });
 });

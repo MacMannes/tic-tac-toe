@@ -24,8 +24,10 @@ export class Game {
                 this.ui.displayBoard(this.ticTacToe.getBoard());
                 if (this.ticTacToe.checkWin(this.ticTacToe.playerSymbol)) {
                     this.ui.showMessage("Congratulations, you win!");
+                    this.ui.close();
                 } else if (this.ticTacToe.isBoardFull()) {
                     this.ui.showMessage("It's a draw!");
+                    this.ui.close();
                 } else {
                     this.botTurn();
                 }

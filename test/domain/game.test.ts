@@ -26,6 +26,7 @@ describe('Game', () => {
             getPlayerMove: vi.fn(),
             showMessage: vi.fn(),
             displayBotMove: vi.fn(),
+            close: vi.fn(),
         } as unknown as CLI;
 
         // Override implementation in the Game class
@@ -61,6 +62,7 @@ describe('Game', () => {
 
             expect(mockCLI.displayBoard).toHaveBeenCalled();
             expect(mockCLI.showMessage).toHaveBeenCalledWith("Congratulations, you win!");
+            expect(mockCLI.close).toHaveBeenCalled();
         });
 
         it('should allow the player to make a move and check for a draw', () => {
@@ -76,6 +78,7 @@ describe('Game', () => {
 
             expect(mockCLI.displayBoard).toHaveBeenCalled();
             expect(mockCLI.showMessage).toHaveBeenCalledWith("It's a draw!");
+            expect(mockCLI.close).toHaveBeenCalled();
         });
 
         it('should prompt again when invalid move is made', () => {

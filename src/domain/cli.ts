@@ -36,4 +36,8 @@ export class CLI {
         const rowSeparator = '\n-+-+-\n'
         return board.map((columns) => columns.join('|')).join(rowSeparator)
     }
+
+    public close() {
+        this.io.close();
+    }
 }
