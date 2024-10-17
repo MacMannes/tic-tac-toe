@@ -55,8 +55,13 @@ describe('CLI', () => {
         const callback = vi.fn();
 
         it('should ask the player for a move', () => {
+            (mockIO.question as Mock).mockImplementation((question, callback) => {
+                callback('1 2'); // Simulating user input
+            });
+
             cli.getPlayerMove(callback)
-            expect(mockIO.question).toHaveBeenCalledWith('Enter your move (row and column separated by a space, e.g., "1 1"): ');
+            expect(mockIO.question).toHaveBeenCalledTimes(1); // Ensure it was called once
+            expect(mockIO.question).toHaveBeenCalledWith('Enter your move (row and column separated by a space, e.g., "1 1"): ', expect.anything());
         });
 
         it('should call callback with correct row and column for valid input', () => {
@@ -69,15 +74,20 @@ describe('CLI', () => {
 
             cli.getPlayerMove(callback);
 
-            expect(callback).toHaveBeenCalledWith(0, 1); // (row - 1, col - 1)
+            expect(callback).toHaveBeenCalledWith({ row: 0, col: 1 }); // (row - 1, col - 1)
         });
 
         it('should prompt again for invalid input', () => {
             const callback = vi.fn();
 
             // Mock the `question` method for invalid input first
-            (mockIO.question as Mock).mockImplementation((question, callback) => {
+            (mockIO.question as Mock).mockImplementationOnce((question, callback) => {
                 callback('5 5'); // Simulating user input
+            });
+
+            // Mock the `question` method again for another invalid input
+            (mockIO.question as Mock).mockImplementationOnce((question, callback) => {
+                callback('1 5'); // Simulating user input
             });
 
             // Mock the `question` method again for valid input
@@ -87,14 +97,10 @@ describe('CLI', () => {
 
             cli.getPlayerMove(callback);
 
-            expect(callback).toHaveBeenCalledTimes(1); // Callback should not be called yet
             expect(mockIO.print).toHaveBeenCalledWith("Invalid input. Try again."); // Check for error message
-
-            // Now call the second implementation
-            cli.getPlayerMove(callback);
-
-            expect(callback).toHaveBeenCalledWith(1, 2); // (row - 1, col - 1)
-            expect(callback).toHaveBeenCalledTimes(2); // Callback should be called now
+            expect(mockIO.print).toHaveBeenCalledTimes(2) // The error message should be printed twice
+            expect(callback).toHaveBeenCalledWith({ row: 1, col: 2 }); // (row - 1, col - 1)
+            expect(callback).toHaveBeenCalledTimes(1); // Callback should be called only once
         });
     });
 
