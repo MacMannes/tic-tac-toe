@@ -8,14 +8,14 @@ export class ReadLineIO implements UserIO {
     });
 
     question(query: string, callback: (answer: string) => void): void {
-        throw new Error('Method not implemented.');
+        this.rl.question(query, callback);
     }
 
     print(message: string): void {
-        throw new Error('Method not implemented.');
+        console.log(message);
     }
 
     close(): void {
-        throw new Error('Method not implemented.');
+        this.rl.close();
     }
 }
