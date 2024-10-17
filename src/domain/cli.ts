@@ -28,7 +28,7 @@ export class CLI {
         this.io.print(`Bot placed at (${move.row + 1}, ${move.col + 1})`)
     }
 
-    public endGame(message: string): void {
+    public showMessage(message: string): void {
         this.io.print(message)
     }
 

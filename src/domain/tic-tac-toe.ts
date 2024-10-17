@@ -2,8 +2,8 @@ import { Board, Move } from './models';
 
 export class TicTacToe {
     private board: Board;
-    private playerSymbol: string;
-    private botSymbol: string;
+    public readonly playerSymbol: string;
+    public readonly botSymbol: string;
 
     constructor(playerSymbol: string = 'X', botSymbol: string = 'O') {
         this.board = [

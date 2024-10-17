@@ -43,11 +43,11 @@ describe('CLI', () => {
         });
     });
 
-    describe('endGame', () => {
+    describe('showMessage', () => {
         it('should call the io.print method with the supplied message', () => {
-            cli.endGame('You win!');
+            cli.showMessage('Welcome to Tic Tac Toe!');
 
-            expect(mockIO.print).toHaveBeenCalledWith('You win!');
+            expect(mockIO.print).toHaveBeenCalledWith('Welcome to Tic Tac Toe!');
         });
     });
 
