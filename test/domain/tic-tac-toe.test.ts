@@ -66,7 +66,8 @@ describe('TicTacToe', () => {
                 ['O', ' ', 'X']
             ]
             const result = ticTacToe.isBoardFull();
-            expect(result).toBeFalsy;
+            expect(result).toBeDefined();
+            expect(result).toBeFalsy();
         });
 
         it('should return true when the board is full', () => {
@@ -77,7 +78,8 @@ describe('TicTacToe', () => {
                 ['O', 'O', 'X']
             ]
             const result = ticTacToe.isBoardFull();
-            expect(result).toBeFalsy;
+            expect(result).toBeDefined();
+            expect(result).toBeFalsy();
         });
     });
 
@@ -91,12 +93,14 @@ describe('TicTacToe', () => {
 
         it('should return false when the specified symbol did not win yet', () => {
             const result = ticTacToe.checkWin('X');
-            expect(result).toBeFalsy;
+            expect(result).toBeDefined();
+            expect(result).toBeFalsy();
         });
 
         it('should return true when the specified symbol has wun', () => {
             const result = ticTacToe.checkWin('O');
-            expect(result).toBeTruthy;
+            expect(result).toBeDefined();
+            expect(result).toBeTruthy();
         });
     });
 });
