@@ -1,16 +1,17 @@
 import { Player } from './player';
-import { Game } from './game';
+import { GameState } from './game-state';
 import { Cell } from './cell';
 
 export class TicTacToe {
-    private game: Game = { state: 'InProgress', player: 'X', board: new Map<Cell, Player>() };
+    private game: GameState = { state: 'InProgress', player: 'X' };
+    private board: Map<Cell, Player> = new Map<Cell, Player>();
 
     public getCurrentPlayer(): Player {
         return this.game.player;
     }
 
     public makeMove(cell: Cell) {
-        this.game.board.set(cell, this.game.player);
+        this.board.set(cell, this.game.player);
 
         const winner = this.checkWinner();
         if (winner) {
@@ -21,12 +22,12 @@ export class TicTacToe {
         }
     }
 
-    public getGame(): Game {
+    public getGameState(): GameState {
         return this.game;
     }
 
     private checkWinner(): Player | undefined {
-        const board = this.game.board;
+        const board = this.board;
 
         // First vertical line
         if (board.get('TOP_LEFT') === board.get('MIDDLE_LEFT') && board.get('TOP_LEFT') === board.get('BOTTOM_LEFT')) {

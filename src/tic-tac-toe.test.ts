@@ -39,7 +39,7 @@ describe('Tic Tac Toe', () => {
         ticTacToe.makeMove('TOP_LEFT');
         ticTacToe.makeMove('MIDDLE_CENTER');
 
-        const state = ticTacToe.getGame().state;
+        const state = ticTacToe.getGameState().state;
 
         expect(state).toBe('InProgress');
     });
@@ -51,7 +51,7 @@ describe('Tic Tac Toe', () => {
         ticTacToe.makeMove('BOTTOM_RIGHT');
         ticTacToe.makeMove('BOTTOM_LEFT');
 
-        const game = ticTacToe.getGame();
+        const game = ticTacToe.getGameState();
 
         expect(game.state).toBe('Won');
         expect(game.player).toBe('X');
@@ -67,7 +67,7 @@ describe('Tic Tac Toe', () => {
         ticTacToe.makeMove('BOTTOM_LEFT');
         ticTacToe.makeMove('MIDDLE_LEFT');
 
-        const game = ticTacToe.getGame();
+        const game = ticTacToe.getGameState();
 
         expect(game.state).toBe('Won');
         expect(game.player).toBe('O');

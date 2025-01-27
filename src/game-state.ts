@@ -1,8 +1,6 @@
 import { Player } from './player';
-import { Cell } from './cell';
 
-export type Game = {
+export type GameState = {
     state: 'InProgress' | 'Won';
-    board: Map<Cell, Player>;
     player: Player;
 };
