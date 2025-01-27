@@ -58,14 +58,6 @@ describe('Tic Tac Toe', () => {
     });
 
     it('should let player O win with a horizontal line', () => {
-        /**
-         *     X|X|O
-         *     -+-+-
-         *     O|O|O
-         *     -+-+-
-         *     X| |X
-         */
-
         ticTacToe.makeMove('TOP_LEFT');
         ticTacToe.makeMove('MIDDLE_CENTER');
         ticTacToe.makeMove('TOP_CENTER');
