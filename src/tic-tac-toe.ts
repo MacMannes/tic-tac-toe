@@ -3,6 +3,7 @@ import { GameState } from './game-state';
 
 export class TicTacToe {
     private player: Player = 'X';
+    private gameState: GameState = { state: 'InProgress' };
 
     public getCurrentPlayer(): Player {
         return this.player;
@@ -13,6 +14,6 @@ export class TicTacToe {
     }
 
     public getGameState(): GameState {
-        return 'InProgress';
+        return this.gameState;
     }
 }

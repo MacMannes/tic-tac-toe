@@ -41,6 +41,15 @@ describe('Tic Tac Toe', () => {
 
         const state = ticTacToe.getGameState();
 
-        expect(state).toBe('InProgress');
+        expect(state).toStrictEqual({ state: 'InProgress' });
+    });
+
+    it('should let player win with a vertical line', () => {
+        ticTacToe.makeMove();
+        ticTacToe.makeMove();
+
+        const state = ticTacToe.getGameState();
+
+        expect(state).toBe({ state: 'Won', player: 'X' });
     });
 });
