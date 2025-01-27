@@ -2,15 +2,14 @@ import { Player } from './player';
 import { GameState } from './game-state';
 
 export class TicTacToe {
-    private player: Player = 'X';
-    private gameState: GameState = { state: 'InProgress' };
+    private gameState: GameState = { state: 'InProgress', player: 'X' };
 
     public getCurrentPlayer(): Player {
-        return this.player;
+        return this.gameState.player;
     }
 
     public makeMove() {
-        this.player = this.player === 'X' ? 'O' : 'X';
+        this.gameState.player = this.gameState.player === 'X' ? 'O' : 'X';
     }
 
     public getGameState(): GameState {
