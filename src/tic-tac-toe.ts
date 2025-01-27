@@ -1,9 +1,13 @@
 import { Player } from './player';
 
 export class TicTacToe {
+    private player: Player = 'X';
+
     public getCurrentPlayer(): Player {
-        return 'X';
+        return this.player;
     }
 
-    makeMove() {}
+    makeMove() {
+        this.player = 'O';
+    }
 }
