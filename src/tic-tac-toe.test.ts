@@ -44,7 +44,7 @@ describe('Tic Tac Toe', () => {
         expect(state).toBe('InProgress');
     });
 
-    it('should let player win with a vertical line', () => {
+    it('should let player X win with a vertical line', () => {
         ticTacToe.makeMove('TOP_LEFT');
         ticTacToe.makeMove('MIDDLE_CENTER');
         ticTacToe.makeMove('MIDDLE_LEFT');
@@ -55,5 +55,29 @@ describe('Tic Tac Toe', () => {
 
         expect(game.state).toBe('Won');
         expect(game.player).toBe('X');
+    });
+
+    it('should let player O win with a horizontal line', () => {
+        /**
+         *     X|X|O
+         *     -+-+-
+         *     O|O|O
+         *     -+-+-
+         *     X| |X
+         */
+
+        ticTacToe.makeMove('TOP_LEFT');
+        ticTacToe.makeMove('MIDDLE_CENTER');
+        ticTacToe.makeMove('TOP_CENTER');
+        ticTacToe.makeMove('MIDDLE_RIGHT');
+        ticTacToe.makeMove('BOTTOM_RIGHT');
+        ticTacToe.makeMove('TOP_RIGHT');
+        ticTacToe.makeMove('BOTTOM_LEFT');
+        ticTacToe.makeMove('MIDDLE_LEFT');
+
+        const game = ticTacToe.getGame();
+
+        expect(game.state).toBe('Won');
+        expect(game.player).toBe('O');
     });
 });
