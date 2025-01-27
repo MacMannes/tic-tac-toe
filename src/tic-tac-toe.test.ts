@@ -8,17 +8,17 @@ describe('Tic Tac Toe', () => {
         ticTacToe = new TicTacToe();
     });
 
-    it('Should create an instance of the TicTacToe class', () => {
+    it('should create an instance of the TicTacToe class', () => {
         expect(ticTacToe).toBeDefined();
     });
 
-    it('Should make first player X', () => {
+    it('should make first player X', () => {
         const player = ticTacToe.getCurrentPlayer();
 
         expect(player).toBe('X');
     });
 
-    it('Should make second player O', () => {
+    it('should make second player O', () => {
         ticTacToe.makeMove();
 
         const player = ticTacToe.getCurrentPlayer();
@@ -26,12 +26,21 @@ describe('Tic Tac Toe', () => {
         expect(player).toBe('O');
     });
 
-    it('Should switch players after each move', () => {
+    it('should switch players after each move', () => {
         ticTacToe.makeMove();
         ticTacToe.makeMove();
 
         const player = ticTacToe.getCurrentPlayer();
 
         expect(player).toBe('X');
+    });
+
+    it('should have state `InProgress` when no player has won', () => {
+        ticTacToe.makeMove();
+        ticTacToe.makeMove();
+
+        const state = ticTacToe.getGameState();
+
+        expect(state).toBe('InProgress');
     });
 });
