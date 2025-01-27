@@ -13,4 +13,13 @@ describe('Tic Tac Toe', () => {
         const player = ticTacToe.getCurrentPlayer();
         expect(player).toBe('X');
     });
+
+    it('Should make second player O', () => {
+        const ticTacToe = new TicTacToe();
+        ticTacToe.makeMove();
+
+        const player = ticTacToe.getCurrentPlayer();
+
+        expect(player).toBe('O');
+    });
 });

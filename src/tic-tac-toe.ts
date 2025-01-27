@@ -4,4 +4,6 @@ export class TicTacToe {
     public getCurrentPlayer(): Player {
         return 'X';
     }
+
+    makeMove() {}
 }
