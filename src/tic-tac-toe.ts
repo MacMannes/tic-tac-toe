@@ -8,6 +8,6 @@ export class TicTacToe {
     }
 
     makeMove() {
-        this.player = 'O';
+        this.player = this.player === 'X' ? 'O' : 'X';
     }
 }
