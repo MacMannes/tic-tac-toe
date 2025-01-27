@@ -2,7 +2,7 @@
 
 Development roadmap milestones
 
-- [ ] Game Board Creation phase
+- [X] Game Board Creation phase
 
     ```
     Game Board Creation…
@@ -17,7 +17,7 @@ Development roadmap milestones
     The game will start with player X
     ```
 
-- [ ] Player X won with a vertical line
+- [X] Player X won with a vertical line
 
     ```
     Player X:

@@ -19,7 +19,7 @@ describe('Tic Tac Toe', () => {
     });
 
     it('should make second player O', () => {
-        ticTacToe.makeMove();
+        ticTacToe.makeMove('TOP_LEFT');
 
         const player = ticTacToe.getCurrentPlayer();
 
@@ -27,8 +27,8 @@ describe('Tic Tac Toe', () => {
     });
 
     it('should switch players after each move', () => {
-        ticTacToe.makeMove();
-        ticTacToe.makeMove();
+        ticTacToe.makeMove('TOP_LEFT');
+        ticTacToe.makeMove('MIDDLE_CENTER');
 
         const player = ticTacToe.getCurrentPlayer();
 
@@ -36,20 +36,24 @@ describe('Tic Tac Toe', () => {
     });
 
     it('should have state `InProgress` when no player has won', () => {
-        ticTacToe.makeMove();
-        ticTacToe.makeMove();
+        ticTacToe.makeMove('TOP_LEFT');
+        ticTacToe.makeMove('MIDDLE_CENTER');
 
-        const state = ticTacToe.getGameState().state;
+        const state = ticTacToe.getGame().state;
 
         expect(state).toBe('InProgress');
     });
 
     it('should let player win with a vertical line', () => {
-        ticTacToe.makeMove();
-        ticTacToe.makeMove();
+        ticTacToe.makeMove('TOP_LEFT');
+        ticTacToe.makeMove('MIDDLE_CENTER');
+        ticTacToe.makeMove('MIDDLE_LEFT');
+        ticTacToe.makeMove('BOTTOM_RIGHT');
+        ticTacToe.makeMove('BOTTOM_LEFT');
 
-        const state = ticTacToe.getGameState();
+        const game = ticTacToe.getGame();
 
-        expect(state).toBe({ state: 'Won', player: 'X' });
+        expect(game.state).toBe('Won');
+        expect(game.player).toBe('X');
     });
 });
