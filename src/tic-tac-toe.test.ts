@@ -1,8 +1,12 @@
-import { describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it } from 'vitest';
 import { TicTacToe } from './tic-tac-toe';
 
 describe('Tic Tac Toe', () => {
-    const ticTacToe = new TicTacToe();
+    let ticTacToe: TicTacToe;
+
+    beforeEach(() => {
+        ticTacToe = new TicTacToe();
+    });
 
     it('Should create an instance of the TicTacToe class', () => {
         expect(ticTacToe).toBeDefined();
