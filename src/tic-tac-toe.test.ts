@@ -25,4 +25,13 @@ describe('Tic Tac Toe', () => {
 
         expect(player).toBe('O');
     });
+
+    it('Should switch players after each move', () => {
+        ticTacToe.makeMove();
+        ticTacToe.makeMove();
+
+        const player = ticTacToe.getCurrentPlayer();
+
+        expect(player).toBe('X');
+    });
 });
