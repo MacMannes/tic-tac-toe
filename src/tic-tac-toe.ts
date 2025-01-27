@@ -13,6 +13,6 @@ export class TicTacToe {
     }
 
     public getGameState(): GameState {
-        return '';
+        return 'InProgress';
     }
 }
