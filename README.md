@@ -2,7 +2,7 @@
 
 ## Rules
 
-The rules of the tic tac toe game are the following:
+The rules of the Tic Tac Toe game are the following:
 
 - a game is over when all fields are taken
 - a game is over when all fields in a column are taken by a player
