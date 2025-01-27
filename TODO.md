@@ -31,7 +31,7 @@ Development roadmap milestones
     PLAYER X WON!    
     ```
   
-- [ ] Player O won with a horizontal line
+- [X] Player O won with a horizontal line
 
     ```
     Player O:

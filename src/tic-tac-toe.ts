@@ -28,8 +28,14 @@ export class TicTacToe {
     private checkWinner(): Player | undefined {
         const board = this.game.board;
 
+        // First vertical line
         if (board['TOP_LEFT'] === board['MIDDLE_LEFT'] && board['TOP_LEFT'] === board['BOTTOM_LEFT']) {
             return board['TOP_LEFT'];
+        }
+
+        // Second horizontal line
+        if (board['MIDDLE_LEFT'] === board['MIDDLE_CENTER'] && board['MIDDLE_LEFT'] === board['MIDDLE_RIGHT']) {
+            return board['MIDDLE_LEFT'];
         }
 
         return undefined;
