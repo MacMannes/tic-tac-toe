@@ -6,4 +6,11 @@ describe('Tic Tac Toe', () => {
         const ticTacToe = new TicTacToe();
         expect(ticTacToe).toBeDefined();
     });
+
+    it('Should make first player X', () => {
+        const ticTacToe = new TicTacToe();
+
+        const player = ticTacToe.getCurrentPlayer();
+        expect(player).toBe('X');
+    });
 });
