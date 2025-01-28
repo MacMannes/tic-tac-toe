@@ -72,4 +72,19 @@ describe('Tic Tac Toe', () => {
         expect(game.state).toBe('Won');
         expect(game.player).toBe('O');
     });
+
+    it('should let player X win with a diagonal line', () => {
+        ticTacToe.makeMove('TOP_LEFT');
+        ticTacToe.makeMove('TOP_RIGHT');
+        ticTacToe.makeMove('BOTTOM_LEFT');
+        ticTacToe.makeMove('MIDDLE_LEFT');
+        ticTacToe.makeMove('BOTTOM_RIGHT');
+        ticTacToe.makeMove('MIDDLE_RIGHT');
+        ticTacToe.makeMove('MIDDLE_CENTER');
+
+        const game = ticTacToe.getGameState();
+
+        expect(game.state).toBe('Won');
+        expect(game.player).toBe('X');
+    });
 });
