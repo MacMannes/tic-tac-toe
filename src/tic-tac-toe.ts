@@ -15,12 +15,10 @@ export class TicTacToe {
 
         const winner = this.checkWinner();
         if (winner) {
-            this.game.state = 'Won';
-            this.game.player = winner;
+            this.game = { state: 'Won', player: winner };
         } else {
             if (this.board.size === 9) {
-                this.game.state = 'Draw';
-                this.game.player = 'None';
+                this.game = { state: 'Draw', player: 'None' };
             } else {
                 this.game.player = this.game.player === 'X' ? 'O' : 'X';
             }
