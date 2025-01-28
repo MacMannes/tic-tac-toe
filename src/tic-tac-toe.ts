@@ -1,6 +1,8 @@
 import { Player } from './player';
 import { GameState } from './game-state';
 import { Cell } from './cell';
+import { winScenarios } from './win-scenarios';
+import { isDefined } from './array-utils';
 
 export class TicTacToe {
     private gameState: GameState = { state: 'InProgress', player: 'X' };
@@ -36,25 +38,13 @@ export class TicTacToe {
     private checkWinner(): Player | undefined {
         const board = this.board;
 
-        // First vertical line
-        if (board.get('TOP_LEFT') === board.get('MIDDLE_LEFT') && board.get('TOP_LEFT') === board.get('BOTTOM_LEFT')) {
-            return board.get('TOP_LEFT');
-        }
+        for (const scenario of winScenarios) {
+            // No forEach here, because we want to return early
+            const players = scenario.map((cell) => board.get(cell)).filter(isDefined);
 
-        // Second horizontal line
-        if (
-            board.get('MIDDLE_LEFT') === board.get('MIDDLE_CENTER') &&
-            board.get('MIDDLE_LEFT') === board.get('MIDDLE_RIGHT')
-        ) {
-            return board.get('MIDDLE_LEFT');
-        }
-
-        // First diagonal line
-        if (
-            board.get('TOP_LEFT') === board.get('MIDDLE_CENTER') &&
-            board.get('TOP_LEFT') === board.get('BOTTOM_RIGHT')
-        ) {
-            return board.get('TOP_LEFT');
+            if (players.length === 3 && players.every((player) => player === players[0])) {
+                return players[0];
+            }
         }
 
         return undefined;
