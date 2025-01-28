@@ -142,10 +142,11 @@ describe('Tic Tac Toe', () => {
 
     it('should not allow invalid moves', () => {
         ticTacToe.makeMove('TOP_LEFT');
-        ticTacToe.makeMove('TOP_LEFT');
+        const validMove = ticTacToe.makeMove('TOP_LEFT');
 
         const game = ticTacToe.getGameState();
 
         expect(game.player).toBe('O');
+        expect(validMove).toBeFalsy();
     });
 });

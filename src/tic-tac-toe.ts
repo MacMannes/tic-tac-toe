@@ -12,10 +12,14 @@ export class TicTacToe {
         return this.gameState.player;
     }
 
-    public makeMove(cell: Cell) {
-        this.board.set(cell, this.gameState.player);
+    public makeMove(cell: Cell): boolean {
+        if (this.board.has(cell)) {
+            return false;
+        }
 
+        this.board.set(cell, this.gameState.player);
         this.gameState = this.getNewGameState();
+        return true;
     }
 
     public getGameState(): GameState {
