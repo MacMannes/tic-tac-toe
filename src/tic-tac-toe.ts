@@ -3,30 +3,34 @@ import { GameState } from './game-state';
 import { Cell } from './cell';
 
 export class TicTacToe {
-    private game: GameState = { state: 'InProgress', player: 'X' };
+    private gameState: GameState = { state: 'InProgress', player: 'X' };
     private board: Map<Cell, Player> = new Map<Cell, Player>();
 
     public getCurrentPlayer(): Player {
-        return this.game.player;
+        return this.gameState.player;
     }
 
     public makeMove(cell: Cell) {
-        this.board.set(cell, this.game.player);
+        this.board.set(cell, this.gameState.player);
 
+        this.gameState = this.getNewGameState();
+    }
+
+    private getNewGameState(): GameState {
         const winner = this.checkWinner();
         if (winner) {
-            this.game = { state: 'Won', player: winner };
-        } else {
-            if (this.board.size === 9) {
-                this.game = { state: 'Draw', player: 'None' };
-            } else {
-                this.game.player = this.game.player === 'X' ? 'O' : 'X';
-            }
+            return { state: 'Won', player: winner };
         }
+
+        if (this.board.size === 9) {
+            return { state: 'Draw', player: 'None' };
+        }
+
+        return { state: 'InProgress', player: this.gameState.player === 'X' ? 'O' : 'X' };
     }
 
     public getGameState(): GameState {
-        return this.game;
+        return this.gameState;
     }
 
     private checkWinner(): Player | undefined {
