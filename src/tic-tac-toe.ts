@@ -18,6 +18,10 @@ export class TicTacToe {
         this.gameState = this.getNewGameState();
     }
 
+    public getGameState(): GameState {
+        return this.gameState;
+    }
+
     private getNewGameState(): GameState {
         const winner = this.checkWinner();
         if (winner) {
@@ -28,11 +32,11 @@ export class TicTacToe {
             return { state: 'Draw', player: 'None' };
         }
 
-        return { state: 'InProgress', player: this.gameState.player === 'X' ? 'O' : 'X' };
+        return { state: 'InProgress', player: this.getNextPlayer() };
     }
 
-    public getGameState(): GameState {
-        return this.gameState;
+    private getNextPlayer() {
+        return this.gameState.player === 'X' ? 'O' : 'X';
     }
 
     private checkWinner(): Player | undefined {
