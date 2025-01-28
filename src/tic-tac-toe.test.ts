@@ -47,8 +47,10 @@ describe('Tic Tac Toe', () => {
     it('should let player X win with a vertical line', () => {
         ticTacToe.makeMove('TOP_LEFT');
         ticTacToe.makeMove('MIDDLE_CENTER');
+
         ticTacToe.makeMove('MIDDLE_LEFT');
         ticTacToe.makeMove('BOTTOM_RIGHT');
+
         ticTacToe.makeMove('BOTTOM_LEFT');
 
         const game = ticTacToe.getGameState();
@@ -60,10 +62,13 @@ describe('Tic Tac Toe', () => {
     it('should let player O win with a horizontal line', () => {
         ticTacToe.makeMove('TOP_LEFT');
         ticTacToe.makeMove('MIDDLE_CENTER');
+
         ticTacToe.makeMove('TOP_CENTER');
         ticTacToe.makeMove('MIDDLE_RIGHT');
+
         ticTacToe.makeMove('BOTTOM_RIGHT');
         ticTacToe.makeMove('TOP_RIGHT');
+
         ticTacToe.makeMove('BOTTOM_LEFT');
         ticTacToe.makeMove('MIDDLE_LEFT');
 
@@ -76,15 +81,47 @@ describe('Tic Tac Toe', () => {
     it('should let player X win with a diagonal line', () => {
         ticTacToe.makeMove('TOP_LEFT');
         ticTacToe.makeMove('TOP_RIGHT');
+
         ticTacToe.makeMove('BOTTOM_LEFT');
         ticTacToe.makeMove('MIDDLE_LEFT');
+
         ticTacToe.makeMove('BOTTOM_RIGHT');
         ticTacToe.makeMove('MIDDLE_RIGHT');
+
         ticTacToe.makeMove('MIDDLE_CENTER');
 
         const game = ticTacToe.getGameState();
 
         expect(game.state).toBe('Won');
         expect(game.player).toBe('X');
+    });
+
+    it('should end the game with a draw', () => {
+        /**
+         *     X|O|X
+         *     -+-+-
+         *     O|O|X
+         *     -+-+-
+         *     X|X|O
+         */
+
+        ticTacToe.makeMove('TOP_LEFT');
+        ticTacToe.makeMove('TOP_CENTER');
+
+        ticTacToe.makeMove('TOP_RIGHT');
+        ticTacToe.makeMove('MIDDLE_LEFT');
+
+        ticTacToe.makeMove('MIDDLE_RIGHT');
+        ticTacToe.makeMove('MIDDLE_CENTER');
+
+        ticTacToe.makeMove('BOTTOM_LEFT');
+        ticTacToe.makeMove('BOTTOM_RIGHT');
+
+        ticTacToe.makeMove('BOTTOM_CENTER');
+
+        const game = ticTacToe.getGameState();
+
+        expect(game.state).toBe('Draw');
+        expect(game.player).toBe('None');
     });
 });
