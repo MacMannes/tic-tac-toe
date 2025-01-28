@@ -42,6 +42,14 @@ export class TicTacToe {
             return board.get('MIDDLE_LEFT');
         }
 
+        // First diagonal line
+        if (
+            board.get('TOP_LEFT') === board.get('MIDDLE_CENTER') &&
+            board.get('TOP_LEFT') === board.get('BOTTOM_RIGHT')
+        ) {
+            return board.get('TOP_LEFT');
+        }
+
         return undefined;
     }
 }
