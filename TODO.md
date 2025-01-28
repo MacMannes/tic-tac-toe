@@ -45,7 +45,7 @@ Development roadmap milestones
     PLAYER O WON!    
     ```
 
-- [ ] Player X won with a diagonal line
+- [x] Player X won with a diagonal line
 
     ```
     Player X:
@@ -59,7 +59,7 @@ Development roadmap milestones
     PLAYER X WON!    
     ```
 
-- [ ] The game ends with a draw
+- [x] The game ends with a draw
 
     ```
     Player X:
