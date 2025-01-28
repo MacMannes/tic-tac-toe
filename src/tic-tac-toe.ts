@@ -23,7 +23,7 @@ export class TicTacToe {
     }
 
     private getNewGameState(): GameState {
-        const winner = this.checkWinner();
+        const winner = this.getWinner();
         if (winner) {
             return { state: 'Won', player: winner };
         }
@@ -39,12 +39,10 @@ export class TicTacToe {
         return this.gameState.player === 'X' ? 'O' : 'X';
     }
 
-    private checkWinner(): Player | undefined {
-        const board = this.board;
-
+    private getWinner(): Player | undefined {
         for (const scenario of winScenarios) {
             // No forEach here, because we want to return early
-            const players = scenario.map((cell) => board.get(cell)).filter(isDefined);
+            const players = scenario.map((cell) => this.board.get(cell)).filter(isDefined);
 
             if (players.length === 3 && players.every((player) => player === players[0])) {
                 return players[0];
