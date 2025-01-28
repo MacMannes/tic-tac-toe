@@ -44,9 +44,12 @@ export class TicTacToe {
     }
 
     private getWinner(): Player | undefined {
+        // No forEach here, because we want to return early
         for (const scenario of winScenarios) {
-            // No forEach here, because we want to return early
-            const players = scenario.map((cell) => this.board.get(cell)).filter(isDefined);
+            //prettier-ignore
+            const players = scenario
+                .map((cell) => this.board.get(cell))
+                .filter(isDefined);
 
             if (players.length === 3 && players.every((player) => player === players[0])) {
                 return players[0];
