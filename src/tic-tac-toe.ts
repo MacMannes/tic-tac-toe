@@ -18,7 +18,12 @@ export class TicTacToe {
             this.game.state = 'Won';
             this.game.player = winner;
         } else {
-            this.game.player = this.game.player === 'X' ? 'O' : 'X';
+            if (this.board.size === 9) {
+                this.game.state = 'Draw';
+                this.game.player = 'None';
+            } else {
+                this.game.player = this.game.player === 'X' ? 'O' : 'X';
+            }
         }
     }
 
