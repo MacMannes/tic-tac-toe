@@ -139,4 +139,13 @@ describe('Tic Tac Toe', () => {
         expect(game.state).toBe('Draw');
         expect(game.player).toBe('None');
     });
+
+    it('should not allow invalid moves', () => {
+        ticTacToe.makeMove('TOP_LEFT');
+        ticTacToe.makeMove('TOP_LEFT');
+
+        const game = ticTacToe.getGameState();
+
+        expect(game.player).toBe('O');
+    });
 });
